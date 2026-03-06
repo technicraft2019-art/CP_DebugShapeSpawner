@@ -1,4 +1,6 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+/** This Projects name is CP_DebugShapwSpawner.
+This current file is DrawDebugShapeSpawner.h
+This is the Parent Debug Spawning Class Header file. */
 
 #pragma once
 
@@ -12,15 +14,13 @@ class CP_DEBUGSHAPESPAWNER_API ADrawDebugShapeSpawner : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	ADrawDebugShapeSpawner();
+	virtual void OnConstruction(const FTransform& Transform) override;
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+private:
+	void DrawTestSphere() const;
 
 };

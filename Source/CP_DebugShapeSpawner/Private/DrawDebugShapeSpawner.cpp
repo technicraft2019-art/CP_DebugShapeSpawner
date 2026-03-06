@@ -1,27 +1,36 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+/** This Projects name is CP_DebugShapwSpawner.
+This current file is DrawDebugShapeSpawner.cpp 
+This is the Parent Debug Spawning Class Source file. */
 
 #include "DrawDebugShapeSpawner.h"
+#include "DrawDebugHelpers.h"
 
-// Sets default values
 ADrawDebugShapeSpawner::ADrawDebugShapeSpawner()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 }
 
-// Called when the game starts or when spawned
+void ADrawDebugShapeSpawner::OnConstruction(const FTransform& Transform)
+{
+	Super::OnConstruction(Transform);
+
+	DrawTestSphere();
+}
+
 void ADrawDebugShapeSpawner::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	DrawTestSphere();
 }
 
-// Called every frame
-void ADrawDebugShapeSpawner::Tick(float DeltaTime)
+void ADrawDebugShapeSpawner::DrawTestSphere() const
 {
-	Super::Tick(DeltaTime);
+	if (!GetWorld())
+	{
+		return;
+	}
 
+	DrawDebugSphere(GetWorld(),	GetActorLocation(),	50.0f, 16, FColor::Green, false, 10.0f,	0, 2.0f);
 }
-
