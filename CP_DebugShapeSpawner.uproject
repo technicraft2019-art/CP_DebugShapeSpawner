@@ -7,7 +7,10 @@
 		{
 			"Name": "CP_DebugShapeSpawner",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [
